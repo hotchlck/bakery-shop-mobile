@@ -62,8 +62,6 @@
           ShopItem("Tambah Item", Icons.add_shopping_cart,Colors.purple),
           ShopItem("Logout", Icons.logout,Colors.pink),
         ];
-
-
        ```
        
    12. Membuat class dengan nama ShopCard untuk menampilkan card. 
