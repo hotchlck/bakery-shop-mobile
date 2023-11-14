@@ -313,13 +313,13 @@
                     ),
    2. Mengarahkan pengguna ke halaman Form ketika menekan tombol ```Tambah Item```
       - Menambahkan kode berikut pada fungsi ```onTap()``` yang terdapat pada berkas ```shopcard.dart``` yang terletak di folder ```lib/widgets```
-      ```
-      if (item.name == "Tambah Produk") {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ShopFormPage(),
-      ```
+         ```
+         if (item.name == "Tambah Produk") {
+             Navigator.push(
+               context,
+               MaterialPageRoute(
+                 builder: (context) => ShopFormPage(),
+         ```
    3. Memunculkan data sesuai isi formulir dalam bentuk ```pop-up```
       - Menambahkan kode berikut pada berkas ```shoplist_form.dart``` yang terletak di folder ```lib/screens```
         ```
