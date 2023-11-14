@@ -124,6 +124,68 @@
         ```
 # Tugas 8 
 ## Perbedaan antara ```Navigator.push()``` dan ```Navigator.pushReplacement()```
+   - ```Navigator.push()```
+     Berfungsi untuk menambahkan route untuk ditampilkan ke pengguna dengan menambahkan halaman baru pada stack navigation dan tidak menghapus route sebelumnya, hal ini memungkinkan pengguna           untuk kembali halaman sebelumnya.
+     Contoh :
+     ```
+     Navigator.push(
+                context, 
+                MaterialPageRoute(
+                  builder: (context) => ShopFormPage(),
+                )
+     ```
+   - ```Navigator.pushReplacement()```
+     Berfungsi untuk menambahkan route untuk ditampilkan ke pengguna dengan menggantikan halaman yang sedang pengguna kunjungi dengan halaman baru pada stack navigation, sehingga pengguna tidak       bisa kembali ke halaman selanjutnya.
+     Contoh :
+     ```
+     Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(),
+                )
+     ```
+## Layout Widget pada Flutter
+   - Align
+     Widget yang digunakan untuk menyusun widget anak sesuai dengan alignment tertentu, dan dapat mengatur ulang ukurannya berdasarkan ukuran widget anak. 
+   - Container
+     Widget yang menggabungkan widget-widget umum untuk menggambar, mengatur penempatan, dan penentuan ukuran.
+   - ConstrainedBox
+     Widget yang memberlakukan batasan tambahan pada widget anaknya. ConstrainedBox sigunakan untuk mengatur batasan minimal dan maksimal untuk lebar, tinggi, dan kedalaman widget anak.
+   - GridView
+     Widget yang digunakan untuk menampilkan data dalam bentuk grid atau tabel. Widget ini dapat menyusun widget anak dalam susunan baris dan kolom, mirip dengan tata letak tabel.
+   - LayoutBuilder
+     Widget yang digunakan untuk membangun widget sesuai dengan batas atau ukuran yang diberikan.
+   - ListView
+     Widget yang digunakan untuk menampilkan widget anak dalam list yang dapat di-scroll. 
+   - Padding
+     Widget yang digunakan untuk mengatur padding atau ruang kosong yang ada di sekeliling widget anak.
+   - Stack
+     Widget yang digunakan untuk menumpuk widget anak di atas widget anak yang lain.
+   - Table
+     Menampilkan widget - widget anak dalam bentuk baris dan kolom.
+   - Wrap
+     Widget yang digunakan untuk menyusun widget anak dalam bentuk baris dan kolom, dan secara otomatis membungkus widget ke baris baru jika melebihi lebar yang ditentukan.
+     
+## Elemen Input pada Form yang Digunakan pada Tugas 8 
+   Pada Tugas 8 saya menggunakan elemen input yang berupa TextFormField. TextFormField adalah widget yang digunakan untuk membuat kolom input teks yang dapat diisi oleh pengguna. TextFormField       secara otomatis menangani berbagai tugas terkait input teks, seperti menangkap input, menampilkan pesan kesalahan, dan memberikan berbagai fitur validasi.
+
+## Penerapan clean architecture pada aplikasi Flutter
+   Clean Architecture membagi proyek menjadi tiga lapisan utama:
+   - Lapisan Data & Platform:
+     - Lapisan data berada di lapisan paling luar dan terdiri dari kode sumber yang terkait dengan data, seperti Rest API, database lokal, Firebase, atau sumber data lainnya.
+     - Juga termasuk kode platform yang membangun tampilan aplikasi, seperti widget dalam Flutter.
+   - Lapisan Presentation:
+     - Lapisan presentasi bertindak sebagai penghubung antara lapisan data dan tampilan aplikasi, dan sering disebut sebagai repository.
+     - Kode untuk manajemen keadaan aplikasi, seperti provider, controller, BLoC, dan sejenisnya, dapat ditempatkan di sini.
+   - Lapisan Domain:
+     - Lapisan domain adalah lapisan terdalam dalam Clean Architecture.
+     - Kode di lapisan ini mencakup logika bisnis aplikasi, seperti entities dan use cases.
+   Setiap lapisan bergantung pada lapisan lainnya. Lapisan luar kan bergantung pada lapisan bagian dalam dan seterusnya. Lapisan yang tidak bergantung pada lapisan lain di sini hanya lapisan         domain, sehingga aplikasi bisa beradpatasi dan dinamis. Sebagai contoh, ketika ingin beralih dari state management menggunakan provider ke BLoC, migrasi tersebut tidak akan mengganggu    
+   business-logic yang sudah ada.
+
+  
+     
+     
 
    
 
