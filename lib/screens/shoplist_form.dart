@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bakery_shop/Item.dart';
 // TODO: Impor drawer yang sudah dibuat sebelumnya
 
 
@@ -119,6 +120,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          Item addItem = Item(_name,_amount,_description);
                           showDialog(
                             context: context,
                             builder: (context) {
