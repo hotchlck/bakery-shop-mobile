@@ -145,25 +145,25 @@
                 )
      ```
 ## Layout Widget pada Flutter
-   - Align
+   - ```Align```
      Widget yang digunakan untuk menyusun widget anak sesuai dengan alignment tertentu, dan dapat mengatur ulang ukurannya berdasarkan ukuran widget anak. 
-   - Container
+   - ```Container```
      Widget yang menggabungkan widget-widget umum untuk menggambar, mengatur penempatan, dan penentuan ukuran.
-   - ConstrainedBox
+   - ```ConstrainedBox```
      Widget yang memberlakukan batasan tambahan pada widget anaknya. ConstrainedBox sigunakan untuk mengatur batasan minimal dan maksimal untuk lebar, tinggi, dan kedalaman widget anak.
-   - GridView
+   - ```GridView```
      Widget yang digunakan untuk menampilkan data dalam bentuk grid atau tabel. Widget ini dapat menyusun widget anak dalam susunan baris dan kolom, mirip dengan tata letak tabel.
-   - LayoutBuilder
+   - ```LayoutBuilder```
      Widget yang digunakan untuk membangun widget sesuai dengan batas atau ukuran yang diberikan.
-   - ListView
+   - ```ListView```
      Widget yang digunakan untuk menampilkan widget anak dalam list yang dapat di-scroll. 
-   - Padding
+   -```Padding```
      Widget yang digunakan untuk mengatur padding atau ruang kosong yang ada di sekeliling widget anak.
-   - Stack
+   - ```Stack```
      Widget yang digunakan untuk menumpuk widget anak di atas widget anak yang lain.
-   - Table
+   - ```Table```
      Menampilkan widget - widget anak dalam bentuk baris dan kolom.
-   - Wrap
+   -```Wrap```
      Widget yang digunakan untuk menyusun widget anak dalam bentuk baris dan kolom, dan secara otomatis membungkus widget ke baris baru jika melebihi lebar yang ditentukan.
      
 ## Elemen Input pada Form yang Digunakan pada Tugas 8 
