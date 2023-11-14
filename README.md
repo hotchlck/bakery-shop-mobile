@@ -122,6 +122,9 @@
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
         }),
         ```
+# Tugas 8 
+## Perbedaan antara ```Navigator.push()``` dan ```Navigator.pushReplacement()```
+
    
 
 
