@@ -180,6 +180,7 @@
    - Lapisan Domain:
      - Lapisan domain adalah lapisan terdalam dalam Clean Architecture.
      - Kode di lapisan ini mencakup logika bisnis aplikasi, seperti entities dan use cases.
+
    Setiap lapisan bergantung pada lapisan lainnya. Lapisan luar kan bergantung pada lapisan bagian dalam dan seterusnya. Lapisan yang tidak bergantung pada lapisan lain di sini hanya lapisan         domain, sehingga aplikasi bisa beradpatasi dan dinamis. Sebagai contoh, ketika ingin beralih dari state management menggunakan provider ke BLoC, migrasi tersebut tidak akan mengganggu    
    business-logic yang sudah ada.
 
