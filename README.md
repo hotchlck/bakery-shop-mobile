@@ -181,15 +181,264 @@
      - Lapisan domain adalah lapisan terdalam dalam Clean Architecture.
      - Kode di lapisan ini mencakup logika bisnis aplikasi, seperti entities dan use cases.
 
-   Setiap lapisan bergantung pada lapisan lainnya. Lapisan luar kan bergantung pada lapisan bagian dalam dan seterusnya. Lapisan yang tidak bergantung pada lapisan lain di sini hanya lapisan         domain, sehingga aplikasi bisa beradpatasi dan dinamis. Sebagai contoh, ketika ingin beralih dari state management menggunakan provider ke BLoC, migrasi tersebut tidak akan mengganggu    
+   Setiap lapisan bergantung pada lapisan lainnya. Lapisan luar kan bergantung pada lapisan bagian dalam dan seterusnya. Lapisan yang tidak bergantung pada lapisan lain di sini hanya lapisan   
+   domain, sehingga aplikasi bisa beradpatasi dan dinamis. Sebagai contoh, ketika ingin beralih dari state management menggunakan provider ke BLoC, migrasi tersebut tidak akan mengganggu
    business-logic yang sudah ada.
 
+## Implementasi Tugas 8 
+   1. Membuat halaman formulir untuk tambah item baru.
+      - Membuat berkas baru dengan nama ```shoplist_form.dart``` pada folder baru ```screens``` di dalam folder ```lib```. ```TextFormField``` yang digunakan akan dibuat untuk menerima tiga elemen input.
+      - Tiga elemen input berupa ```name```, ```amount```, ```description``` yang dilengkapi dengan validasi elemen input. 
+        ```
+        children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Nama Produk",
+                      labelText: "Nama Produk",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _name = value!;
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Nama tidak boleh kosong!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Jumlah",
+                      labelText: "Jumlah",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
   
-     
-     
-
-   
-
-
-
-
+                    onChanged: (String? value) {
+                      setState(() {
+                        _amount = int.parse(value!);
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Jumlah tidak boleh kosong!";
+                      }
+                      if (int.tryParse(value) == null) {
+                        return "Jumlah harus berupa angka!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Deskripsi",
+                      labelText: "Deskripsi",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _description = value!;
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Deskripsi tidak boleh kosong!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+        ```
+      - Tombol ```Save```
+        ```
+        child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.lightBlue),
+                      ),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          Item addItem = Item(_name,_amount,_description);
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text('Produk berhasil tersimpan'),
+                                content: SingleChildScrollView(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Nama: $_name'),
+                                      // TODO: Munculkan value-value lainnya
+                                      Text('Jumlah: $_amount'),
+                                      Text('Deskripsi: $_description'),
+                                    ],
+                                  ),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    child: const Text('OK'),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        _formKey.currentState!.reset();
+                        }
+                      },
+                      child: const Text(
+                        "Save",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+   2. Mengarahkan pengguna ke halaman Form ketika menekan tombol ```Tambah Item```
+      - Menambahkan kode berikut pada fungsi ```onTap()``` yang terdapat pada berkas ```shopcard.dart``` yang terletak di folder ```lib/widgets```
+      ```
+      if (item.name == "Tambah Produk") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ShopFormPage(),
+      ```
+   3. Memunculkan data sesuai isi formulir dalam bentuk ```pop-up```
+      - Menambahkan kode berikut pada berkas ```shoplist_form.dart``` yang terletak di folder ```lib/screens```
+        ```
+        onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          Item addItem = Item(_name,_amount,_description);
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text('Produk berhasil tersimpan'),
+                                content: SingleChildScrollView(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Nama: $_name'),
+                                      Text('Jumlah: $_amount'),
+                                      Text('Deskripsi: $_description'),
+                                    ],
+                                  ),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    child: const Text('OK'),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        _formKey.currentState!.reset();
+                        }
+                      },
+        ``` 
+   4. Menambahkan drawer
+      - Membuat berkas baru dengan nama ```left_drawer.dart``` pada folder ```lib/widgets```.Isi dari berkas tersebut :
+         ```
+         import 'package:bakery_shop/screens/list_item.dart';
+         import 'package:flutter/material.dart';
+         import '../screens/menu.dart';
+         import '../screens/shoplist_form.dart';
+         
+         class LeftDrawer extends StatelessWidget {
+           const LeftDrawer({super.key});
+         
+           @override
+           Widget build(BuildContext context) {
+             return Drawer(
+               child: ListView(
+                 children: [
+                   const DrawerHeader(
+                     decoration: BoxDecoration(
+                       color: Colors.lightBlue,
+                     ),
+                     child: Column(
+                       children: [
+                         Text(
+                           'BakeryShop',
+                           textAlign: TextAlign.center,
+                           style: TextStyle(
+                             fontSize: 30,
+                             fontWeight: FontWeight.bold,
+                             color: Colors.white,
+                           ),
+                         ),
+                         Padding(padding: EdgeInsets.all(10)),
+                         Text(
+                           "Catat seluruh keperluan belanjamu di sini!",
+                           textAlign: TextAlign.center,
+                           style: TextStyle(
+                             color: Colors.white,
+                             fontSize: 15,
+                             fontWeight: FontWeight.normal,
+                           )
+                         ),
+                       ],
+                     ),
+                   ),
+                   ListTile(
+                     leading: const Icon(Icons.home_outlined),
+                     title: const Text('Halaman Utama'),
+                     // Bagian redirection ke MyHomePage
+                     onTap: () {
+                       Navigator.pushReplacement(
+                         context,
+                         MaterialPageRoute(
+                           builder: (context) => MyHomePage(),
+                         )
+                       );
+                     },
+                   ),
+                   ListTile(
+                     leading: const Icon(Icons.add_shopping_cart),
+                     title: const Text('Tambah Produk'),
+                     // Bagian redirection ke ShopFormPage
+                     onTap: () {
+                       Navigator.push(
+                         context, 
+                         MaterialPageRoute(
+                           builder: (context) => ShopFormPage(),
+                         )
+                       );
+                     },
+                   ),
+                   ListTile(
+                           leading: const Icon(Icons.list),
+                           title: const Text('Lihat Produk'),
+                           // Bagian redirection ke ShopFormPage
+                           onTap: () {
+                               Navigator.push(context,
+                                   MaterialPageRoute(builder: (context) => ListItem()));
+                           },
+                         ),
+                 ],
+               ),
+             );
+           }
+         }
+         ```
