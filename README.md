@@ -146,25 +146,25 @@
      ```
 ## Layout Widget pada Flutter
    - ```Align```
-     Widget yang digunakan untuk menyusun widget anak sesuai dengan alignment tertentu, dan dapat mengatur ulang ukurannya berdasarkan ukuran widget anak. 
+     - Widget yang digunakan untuk menyusun widget anak sesuai dengan alignment tertentu, dan dapat mengatur ulang ukurannya berdasarkan ukuran widget anak. 
    - ```Container```
-     Widget yang menggabungkan widget-widget umum untuk menggambar, mengatur penempatan, dan penentuan ukuran.
+     - Widget yang menggabungkan widget-widget umum untuk menggambar, mengatur penempatan, dan penentuan ukuran.
    - ```ConstrainedBox```
-     Widget yang memberlakukan batasan tambahan pada widget anaknya. ConstrainedBox sigunakan untuk mengatur batasan minimal dan maksimal untuk lebar, tinggi, dan kedalaman widget anak.
+     - Widget yang memberlakukan batasan tambahan pada widget anaknya. ConstrainedBox sigunakan untuk mengatur batasan minimal dan maksimal untuk lebar, tinggi, dan kedalaman widget anak.
    - ```GridView```
-     Widget yang digunakan untuk menampilkan data dalam bentuk grid atau tabel. Widget ini dapat menyusun widget anak dalam susunan baris dan kolom, mirip dengan tata letak tabel.
+     - Widget yang digunakan untuk menampilkan data dalam bentuk grid atau tabel. Widget ini dapat menyusun widget anak dalam susunan baris dan kolom, mirip dengan tata letak tabel.
    - ```LayoutBuilder```
-     Widget yang digunakan untuk membangun widget sesuai dengan batas atau ukuran yang diberikan.
+     - Widget yang digunakan untuk membangun widget sesuai dengan batas atau ukuran yang diberikan.
    - ```ListView```
-     Widget yang digunakan untuk menampilkan widget anak dalam list yang dapat di-scroll. 
+     - Widget yang digunakan untuk menampilkan widget anak dalam list yang dapat di-scroll. 
    -```Padding```
-     Widget yang digunakan untuk mengatur padding atau ruang kosong yang ada di sekeliling widget anak.
+     - Widget yang digunakan untuk mengatur padding atau ruang kosong yang ada di sekeliling widget anak.
    - ```Stack```
-     Widget yang digunakan untuk menumpuk widget anak di atas widget anak yang lain.
+     - Widget yang digunakan untuk menumpuk widget anak di atas widget anak yang lain.
    - ```Table```
-     Menampilkan widget - widget anak dalam bentuk baris dan kolom.
+     - Menampilkan widget - widget anak dalam bentuk baris dan kolom.
    -```Wrap```
-     Widget yang digunakan untuk menyusun widget anak dalam bentuk baris dan kolom, dan secara otomatis membungkus widget ke baris baru jika melebihi lebar yang ditentukan.
+     - Widget yang digunakan untuk menyusun widget anak dalam bentuk baris dan kolom, dan secara otomatis membungkus widget ke baris baru jika melebihi lebar yang ditentukan.
      
 ## Elemen Input pada Form yang Digunakan pada Tugas 8 
    Pada Tugas 8 saya menggunakan elemen input yang berupa TextFormField. TextFormField adalah widget yang digunakan untuk membuat kolom input teks yang dapat diisi oleh pengguna. TextFormField       secara otomatis menangani berbagai tugas terkait input teks, seperti menangkap input, menampilkan pesan kesalahan, dan memberikan berbagai fitur validasi.
