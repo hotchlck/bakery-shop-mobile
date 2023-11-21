@@ -9,31 +9,31 @@
 
 ## Widget yang digunakan dalam menyelesaikan tugas 7 beserta fungsinya
    - ```MyHomePage```
-     Digunakan sebagai widget utama untuk mengatur tata letak struktur tampilan home page. 
+     - Digunakan sebagai widget utama untuk mengatur tata letak struktur tampilan home page. 
    - ```AppBar```
-     Widget untuk membuat bar yang terletak pada bagian atas layar. 
+     - Widget untuk membuat bar yang terletak pada bagian atas layar. 
    - ```Scaffold```
-     Widget utama untuk membuat sebuah halaman pada flutter dengan layout design dasar.
+     - Widget utama untuk membuat sebuah halaman pada flutter dengan layout design dasar.
    - ```Padding```
-     Widget yang digunakan untuk mengatur jarak pada disekitar widget atau kumpulan widget lain. 
+     - Widget yang digunakan untuk mengatur jarak pada disekitar widget atau kumpulan widget lain. 
    - ```Column```
-     Widget yang digunakan untuk mengatur tata letak widget lain secara vertikal.
+     - Widget yang digunakan untuk mengatur tata letak widget lain secara vertikal.
    - ```Text```
-     Widget untuk menampilkan serangkaian teks dalam aplikasi.
+     - Widget untuk menampilkan serangkaian teks dalam aplikasi.
    - ```GridView```
-     Widget yang digunakan untuk menampilan elemen - elemen dalam bentuk grid. 
+     - Widget yang digunakan untuk menampilan elemen - elemen dalam bentuk grid. 
    - ```ShopCard```
-     Digunakan untuk menampilkan item dalam bentuk card dan dapat mengatur properti card secara unik (berbeda dengan widget lain) seperti warna, text, dan icon. 
+     - Digunakan untuk menampilkan item dalam bentuk card dan dapat mengatur properti card secara unik (berbeda dengan widget lain) seperti warna, text, dan icon. 
    - ```Material```
-     Digunakan untuk mengatur tampilan dan action pada card.
+     - Digunakan untuk mengatur tampilan dan action pada card.
    - ```InkWell```
-     Digunakan untuk menambahkan action pada widget.
+     - Digunakan untuk menambahkan action pada widget.
    - ```Container```
-     Digunakan sebagai wadah untuk memuat widget lainnya. 
+     - Digunakan sebagai wadah untuk memuat widget lainnya. 
    - ```Icon```
-     Widget ini untuk membuat ikon di aplikasi.
+     - Widget ini untuk membuat ikon di aplikasi.
    - ```SingleChildScrollView```
-     Widget yang digunakan untuk mengatur konten pada aplikasi agar bisa di-scroll secara vertikal. 
+     - Widget yang digunakan untuk mengatur konten pada aplikasi agar bisa di-scroll secara vertikal. 
 
 ## Implementasi Tugas 7
    1. Membuka Command Prompt di direktori yang akan menyimpan proyek flutter.
