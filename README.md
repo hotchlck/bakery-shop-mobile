@@ -442,3 +442,104 @@
            }
          }
          ```
+# Tugas 9 
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+   Pengambilan data JSON tanpa membuat model terlebih dahulu tetap bisa dilakukan. Dalam flutter, data JSON dapat diambil dan dikelola langsung dengan menyimpan data JSON tersebut di dalam map.      Namun, pengambilan data dengan metode ini kurang baik jika dibandingkan pengambilan data menggunakan model. Mengelola data langsung dari JSON lebih rumit karena setiap field data membutuhkan      penanganan secara manual, tidak ada kemanan tipe data, dan sulit mengubah struktur data. Faktor - faktor ini membuat pengolahan data secara langsung dari JSON menjadi tidak efektif dan kode       menjadi sulit dibaca. 
+
+## Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+   ```CookieRequest``` merupakan kelas untuk mengelola HTTP request serta cookie yang terkait. ```CookieRequest``` berperan penting untuk sistem autentikasi dan memiliki beberapa method seperti      ```get```, ```post```, ```login```, dan ```logout```.
+   Beberapa fungsi dari CookieRequest adalah : 
+   - Penanganan Cookie
+     Dengan menggunakan CookieRequest, cookie yang dikirimkan dan diterima oleh aplikasi dalam HTTP Request dapat dikelola. CookieRequest memungkinkan aplikasi untuk menambah, menghapus, atau memperbarui cookie saat berkomunikasi dengan server.
+   - Autentikasi
+     Cookie dapat digunakan untuk menyimpan token autentikasi atau informasi sesi pengguna.
+   - Menjaga konsitensi antara request
+     CookieRequest memastikan bahwa cookie yang digunakan pada HTTP request tetap konsisten di seluruh aplikasi.
+     Alasan untuk membagikan instance CookieRequest ke semua komponen di aplikasi Flutter adalah agar setiap komponen yang membutuhkan akses ke permintaan HTTP juga dapat mengelola cookie dengan       cara yang konsisten. Sehingga, ssemua komponen memiliki akses ke data pengguna yang sama.
+
+##  Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+   1. Fetch Data
+      Menggunakan HTTP request yang berupa ```http.get``` ke URL yang ditentukan.
+   2. Menguraikan string JSON menjadi objek Dart yang dapat diakses dan digunakan dalam program
+   3. Mengubah data JSON menjadi bentuk model berdasarkan model yang sudah dibuat sebelumnya. Hal ini dilakukan agar data lebih mudah diolah.
+   4. Menampilkan data yang sudah didapat secara langsung atau melewati beberapa operasi logika di aplikasi flutter. Contoh, ```ListView.builder``` yang digunakan untuk menampilkan daftar data.
+
+## Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+   1. Pengguna memasukkan data untuk autentikasi seperti username dan password (2 textfield).
+   2. Aplikasi flutter mengirimkan data ke endpoint login Django menggunakan HTTP Request ```POST```.
+   3. Django memproses permintaan login dengan melakukan autentikasi, lalu mengirimkan respons ke aplikasi flutter.
+   4. Respons dari Django diterima oleh aplikasi flutter lalu aplikasi menampilkan hasil autentikasi.
+      
+## Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing
+   - ```ListView.builder```
+     Digunakan untuk membuat daftar item secara dinamis berdasarkan sumber data seperti List atau data yang diperoleh melalui fetch dari API.
+   - ```AlertDialog```
+     Digunakan untuk menampilkan dialog yang berisi pesan atau peringatan kepada pengguna.
+   - ```Provider```
+     Memungkinkan data untuk diakses dan diperbarui dari berbagai bagian dalam aplikasi dengan cara yang mudah dan efisien.
+   - ```FutureBuilder```
+     Digunakan di Flutter untuk membangun UI berdasarkan nilai dari suatu ```Future```.
+   - ```Navigator```
+     Memungkinkan navigasi antara berbagai layar atau halaman dalam aplikasi Flutter.
+   - ```ElevatedButton```
+     Digunakan untuk membuat tombol dengan latar belakang yang terangkat (elevated).
+   - ```FloatingActionButton```
+     Digunakan untuk mwmbuat tombol yang melayang di atas antarmuka pengguna.
+   - ```MaterialPageRoute```
+     Menangani navigasi antar layar di dalam aplikasi yang menggunakan desain Material.
+
+## Implementasi Tugas 9
+   1. Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter.
+      - Menjalankan command ```python manage.py startapp authentication``` pada project Django untuk membuat ```django-app``` bernama ```authentication```. Setelah itu, menambahkan                        ```authentication``` di ```INSTALLED_APPS``` yang ada di berkas ```settings.py``` di dalam proyek utama.
+      - Menjalankan command ```pip install django-cors-headers``` untuk menginstal library yang dibutuhkan. Setealh itu, menambahkan ```corsheaders``` ke ```INSTALLED_APPS``` dan                          ```corsheaders.middleware.CorsMiddleware``` ke ```MIDDLEWARE``` yang terdapat di berkas ```settings.py``` di proyek utama.
+      - Menambahkan variabel berikut ini pada berkas ```setings.py``` di aplikasi django.
+        ```
+        CORS_ALLOW_ALL_ORIGINS = True
+        CORS_ALLOW_CREDENTIALS = True
+        CSRF_COOKIE_SECURE = True
+        SESSION_COOKIE_SECURE = True
+        CSRF_COOKIE_SAMESITE = 'None'
+        SESSION_COOKIE_SAMESITE = 'None'
+        ```
+      - Membuat fungsi untuk login pada direktori ```authentication/views.py```
+        ```
+         from django.shortcuts import render
+         from django.contrib.auth import authenticate, login as auth_login
+         from django.http import JsonResponse
+         from django.views.decorators.csrf import csrf_exempt
+         
+         @csrf_exempt
+         def login(request):
+             username = request.POST['username']
+             password = request.POST['password']
+             user = authenticate(username=username, password=password)
+             if user is not None:
+                 if user.is_active:
+                     auth_login(request, user)
+                     # Status login sukses.
+                     return JsonResponse({
+                         "username": user.username,
+                         "status": True,
+                         "message": "Login sukses!"
+                         # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
+                     }, status=200)
+                 else:
+                     return JsonResponse({
+                         "status": False,
+                         "message": "Login gagal, akun dinonaktifkan."
+                     }, status=401)
+         
+             else:
+                 return JsonResponse({
+                     "status": False,
+                     "message": "Login gagal, periksa kembali email atau kata sandi."
+                 }, status=401)
+        ```
+        Lalu membuat berkas ```ursl.py``` pada ```authentication``` dan menambahkan routing url yang sudah dibuat tersebut.
+        - Menambahkan URL routing ``` path('auth/', include('authentication.urls'))``` pada berkas ```urls.py``` yang ada di proyek utama django.
+          
+      
+
+   
+      
+      
