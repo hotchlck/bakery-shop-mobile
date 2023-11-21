@@ -472,21 +472,21 @@
       
 ## Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing
    - ```ListView.builder```
-     Digunakan untuk membuat daftar item secara dinamis berdasarkan sumber data seperti List atau data yang diperoleh melalui fetch dari API.
+     - Digunakan untuk membuat daftar item secara dinamis berdasarkan sumber data seperti List atau data yang diperoleh melalui fetch dari API.
    - ```AlertDialog```
-     Digunakan untuk menampilkan dialog yang berisi pesan atau peringatan kepada pengguna.
+     - Digunakan untuk menampilkan dialog yang berisi pesan atau peringatan kepada pengguna.
    - ```Provider```
-     Memungkinkan data untuk diakses dan diperbarui dari berbagai bagian dalam aplikasi dengan cara yang mudah dan efisien.
+     - Memungkinkan data untuk diakses dan diperbarui dari berbagai bagian dalam aplikasi dengan cara yang mudah dan efisien.
    - ```FutureBuilder```
-     Digunakan di Flutter untuk membangun UI berdasarkan nilai dari suatu ```Future```.
+     - Digunakan di Flutter untuk membangun UI berdasarkan nilai dari suatu ```Future```.
    - ```Navigator```
-     Memungkinkan navigasi antara berbagai layar atau halaman dalam aplikasi Flutter.
+     - Memungkinkan navigasi antara berbagai layar atau halaman dalam aplikasi Flutter.
    - ```ElevatedButton```
-     Digunakan untuk membuat tombol dengan latar belakang yang terangkat (elevated).
+     - Digunakan untuk membuat tombol dengan latar belakang yang terangkat (elevated).
    - ```FloatingActionButton```
-     Digunakan untuk mwmbuat tombol yang melayang di atas antarmuka pengguna.
+     - Digunakan untuk mwmbuat tombol yang melayang di atas antarmuka pengguna.
    - ```MaterialPageRoute```
-     Menangani navigasi antar layar di dalam aplikasi yang menggunakan desain Material.
+     - Menangani navigasi antar layar di dalam aplikasi yang menggunakan desain Material.
 
 ## Implementasi Tugas 9
    1. Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter.
