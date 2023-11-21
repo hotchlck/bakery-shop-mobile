@@ -2,7 +2,6 @@ import 'package:bakery_shop/screens/list_item.dart';
 import 'package:flutter/material.dart';
 import '../screens/menu.dart';
 import '../screens/shoplist_form.dart';
-// TODO: Impor halaman ShopFormPage jika sudah dibuat
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
