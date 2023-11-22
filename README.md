@@ -311,6 +311,7 @@
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
+        ```
    2. Mengarahkan pengguna ke halaman Form ketika menekan tombol ```Tambah Item```
       - Menambahkan kode berikut pada fungsi ```onTap()``` yang terdapat pada berkas ```shopcard.dart``` yang terletak di folder ```lib/widgets```
          ```
@@ -535,13 +536,13 @@
                      "message": "Login gagal, periksa kembali email atau kata sandi."
                  }, status=401)
         ```
-        Lalu membuat berkas ```ursl.py``` pada ```authentication``` dan menambahkan routing url yang sudah dibuat tersebut.
-        - Menambahkan URL routing ``` path('auth/', include('authentication.urls'))``` pada berkas ```urls.py``` yang ada di proyek utama django.
-     2. Membuat halaman login pada proyek flutter
-        - Menjalankan command ```flutter pub add provider``` dan ```flutter pub add pbp_django_auth``` untuk meng-install package flutter.
-        - Menggunakan provider untuk modifikasi root widget untuk menyediakan ```CookieRequest``` library ke semua child widgets. 
-          ```
-          class MyApp extends StatelessWidget {
+      Lalu membuat berkas ```ursl.py``` pada ```authentication``` dan menambahkan routing url yang sudah dibuat tersebut.
+      - Menambahkan URL routing ``` path('auth/', include('authentication.urls'))``` pada berkas ```urls.py``` yang ada di proyek utama django.
+   2. Membuat halaman login pada proyek flutter
+      - Menjalankan command ```flutter pub add provider``` dan ```flutter pub add pbp_django_auth``` untuk meng-install package flutter.
+      - Menggunakan provider untuk modifikasi root widget untuk menyediakan ```CookieRequest``` library ke semua child widgets. 
+        ```
+        class MyApp extends StatelessWidget {
              const MyApp({Key? key}) : super(key: key);
          
              @override
@@ -563,8 +564,8 @@
              }
           }
 
-          ```
-        - Membuat file baru dengan nama ```login.dart``` pada direktori ```screens```.           Isi file ```login.dart``` :
+        ```
+      - Membuat file baru dengan nama ```login.dart``` pada direktori ```screens```.           Isi file ```login.dart``` :
           ```
             import 'package:bakery_shop/screens/menu.dart';
             import 'package:flutter/material.dart';
@@ -682,24 +683,24 @@
             }
           
           ```
-        - Mengubah kode ```home:MyHomePage()``` menjadi ```home: LoginPage()``` pada file ```main.dart``` di widget ```MatrialApp()```
+      - Mengubah kode ```home:MyHomePage()``` menjadi ```home: LoginPage()``` pada file ```main.dart``` di widget ```MatrialApp()```
 
-      3. Membuat model kustom
-         - Membuka endpoint ```JSON``` pada proyek django dan menyalin data ```JSON```.
-         - Membuka situs web ```Quicktype``` dan menyetel nama model menjadi ```Item```, source type ```JSON```, dan language menjadi ```Dart```.
-         - Menempelkan data ```JSON``` yang tadi sudah disalin.
-         - Menyalin kode yang sudah di generate oleh web ```Quicktype``` dan menempelkannya pada file baru dengan nama ```product.dart``` yang ada direktori ```lib/models```.
-      4. Penerapan Fetch Data dari Django untuk Ditampilkan ke Flutter
-         - Menjalankan command ```flutter pub add http``` untuk menambahkan package http.
-         - Menambahkan kode berikut di direktori ```android/app/src/main/AndroidManifest.xml```
-           ```
-           <application>
-           ...
-           </application>
-           <!-- Required to fetch data from the Internet. -->
-           <uses-permission android:name="android.permission.INTERNET" />
-           ```
-         - Mengubah berkas ```list_item.dart``` yang sudah dibuat sebelumnya saat implementasi bonus tugas 8 di direktori ```lib/screens``` dengan isi kode:
+   3. Membuat model kustom
+      - Membuka endpoint ```JSON``` pada proyek django dan menyalin data ```JSON```.
+      - Membuka situs web ```Quicktype``` dan menyetel nama model menjadi ```Item```, source type ```JSON```, dan language menjadi ```Dart```.
+      - Menempelkan data ```JSON``` yang tadi sudah disalin.
+      - Menyalin kode yang sudah di generate oleh web ```Quicktype``` dan menempelkannya pada file baru dengan nama ```product.dart``` yang ada direktori ```lib/models```.
+   4. Penerapan Fetch Data dari Django untuk Ditampilkan ke Flutter
+      - Menjalankan command ```flutter pub add http``` untuk menambahkan package http.
+      - Menambahkan kode berikut di direktori ```android/app/src/main/AndroidManifest.xml```
+        ```
+        <application>
+        ...
+        </application>
+        <!-- Required to fetch data from the Internet. -->
+        <uses-permission android:name="android.permission.INTERNET" />
+        ```
+      - Mengubah berkas ```list_item.dart``` yang sudah dibuat sebelumnya saat implementasi bonus tugas 8 di direktori ```lib/screens``` dengan isi kode:
            ```
             import 'package:flutter/material.dart';
             import 'package:http/http.dart' as http;
@@ -794,9 +795,9 @@
                 }
             }
 
-           ```
-      5. Integrasi Form Flutter Dengan Layanan Django.
-         - Menambahkan fungsi baru di direktori ```main/views.py``` pada proyek django.
+         ```
+   5. Integrasi Form Flutter Dengan Layanan Django.
+      - Menambahkan fungsi baru di direktori ```main/views.py``` pada proyek django.
            ```
             @csrf_exempt
             def create_product_flutter(request):
@@ -818,20 +819,20 @@
                     return JsonResponse({"status": "error"}, status=401)
 
            ```
-         - Menambahkan URL routing pada ```main/urls.py```
-           ```
-           path('create-flutter/', create_product_flutter, name='create_product_flutter'),
-           ```
-         - Menghubungkan halaman ```shoplist_form.dart dengan``` ```CookieRequest``` pada proyek flutter.
-           ```
-           @override
-           Widget build(BuildContext context) {
-              final request = context.watch<CookieRequest>();
+      - Menambahkan URL routing pada ```main/urls.py```
+        ```
+        path('create-flutter/', create_product_flutter, name='create_product_flutter'),
+        ```
+      - Menghubungkan halaman ```shoplist_form.dart dengan``` ```CookieRequest``` pada proyek flutter.
+        ```
+        @override
+        Widget build(BuildContext context) {
+           final request = context.watch<CookieRequest>();
             
-              return Scaffold(
+           return Scaffold(
            
-           ```
-         - Mengubah perintah pada ```onPressed: ()``` button.
+        ```
+      - Mengubah perintah pada ```onPressed: ()``` button.
            ```
            onPressed: () async {
                       if (_formKey.currentState!.validate()) {
@@ -894,8 +895,8 @@
                   },
 
            ```
-      6. Implementasi Fitur Logout
-         - Menambahkan fungsi logout pada direktori ```authentication/views.py``` pada proyek django
+   6. Implementasi Fitur Logout
+      - Menambahkan fungsi logout pada direktori ```authentication/views.py``` pada proyek django
            ```
             from django.contrib.auth import logout as auth_logout
             ...
@@ -915,22 +916,22 @@
                     "status": False,
                     "message": "Logout gagal."
                     }, status=401)
-              ```
-            - Menambahkan URL routing di ```authentication/urls.py```
-              ```
-              path('logout/', logout, name='logout'),
-              ```
-            - Pada proyek flutter di direktori ```lib/eidgets/shop_card.dart```, menambahkan kode berikut :
-              ```
-               @override
-               Widget build(BuildContext context) {
-                   final request = context.watch<CookieRequest>();
-                   return Material(
-              ```
-            - Mengubah perintah ```onTap: () {...}``` pada widget ```Inkwell``` menjadi ```onTap: () async {...}``` agar logout dapat dilakukan secara asinkronus dan menambahkan kode pada perintah ```onTap :() async {...}``` tersebut.
-              ```
-              ...
-              else if (item.name == "Logout") {
+           ```
+      - Menambahkan URL routing di ```authentication/urls.py```
+        ```
+        path('logout/', logout, name='logout'),
+        ```
+      - Pada proyek flutter di direktori ```lib/eidgets/shop_card.dart```, menambahkan kode berikut :
+        ```
+        @override
+        Widget build(BuildContext context) {
+           final request = context.watch<CookieRequest>();
+           return Material(
+        ```
+      - Mengubah perintah ```onTap: () {...}``` pada widget ```Inkwell``` menjadi ```onTap: () async {...}``` agar logout dapat dilakukan secara asinkronus dan menambahkan kode pada perintah ```onTap :() async {...}``` tersebut.
+        ```
+        ...
+        else if (item.name == "Logout") {
                  final response = await request.logout(
                      // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                      "http://<APP_URL_KAMU>/auth/logout/");
@@ -949,9 +950,9 @@
                      content: Text("$message"),
                    ));
                  }
-               }
-              ...
-              ```
+               }      
+        ...
+        ```
               
            
             
